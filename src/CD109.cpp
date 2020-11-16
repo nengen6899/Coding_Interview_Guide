@@ -1,112 +1,116 @@
-/* CD109: 环形链表的约瑟夫问题(普通解法) */
 
-/* filename: CD109.cpp
+/* 
+ * CD109：环形单链表的约瑟夫问题 
+ * filename: CD109.cpp
  * author:  leisy
- * date: 2020.10.5
+ * date: 2020.11.16 
  * version: 1.0
  * description: 《Programmer interview guide》, charpter 2, CD109,
- *     Josephus problem of circular linked lists.
+ *                Joseph's Problem of Circular Singly Linked List.
  */
- 
  
 #include <iostream>
 using namespace std;
- 
- 
-struct node{
- 	int val;
- 	struct node *next;
+
+struct node {
+	int num;
+	node* prev;
+	node* next;
 };
 
-/* create circular list, the node val is from 1 to n */
-node *do_circular_list(int n) {
-	node *head = NULL;
- 	node *back = NULL;
- 	
-	 if (n <= 0) {
- 		return head;
+
+node* create_cycle(int len) {
+	node* head;
+	node* curr;
+	if (len <= 0) {
+		return NULL;
 	}
 	
-	for (int i = 1; i <= n; i++) {
-		node *ptr = new node();
-		ptr->val = i;
-		ptr->next = NULL;
-		if (i == 1) {
-			head = ptr;
-			back = ptr;
-		} else {
-			back->next = ptr;
-			back = ptr;
-		}
-	}
+	head = new node;
+	head->num = 1;
+	curr = head;
 	
-	back->next = head;
- 	
- 	return head;
- }
- 
- 
-node *remove_node(node *p_rm_node, node *rm_node) {
+	for (int i = 2; i <= len; i++) {
+		node* tmp = new node;
+		tmp->num = i;
+		curr->next = tmp;
+		tmp->prev = curr;
+		curr = tmp;
+	} 
 	
-	
-	
-	
-	
+	head->prev = curr;
+	curr->next = head;
+	return head;
 }
- 
- 
-/* get live node's value */
-int get_live(node *head, int m) {
-	/* assert(head != NULL), and the list is circular */
-	node *begin = head;
-	node *back = head;
+
+
+/* Remove node, and return the next node of curr */
+node* remove_node(node* curr) {
+	node* prev_curr = NULL;
+	node* next_curr = NULL;
+	
+	if (curr == NULL || curr->next == curr) {
+		return curr;
+	}
+	
+	prev_curr = curr->prev;
+	next_curr = curr->next;
+	prev_curr->next = next_curr;
+	next_curr->prev = prev_curr;
+	delete curr;
+	
+	curr = next_curr;
+	return curr;
+}
+
+
+/* 
+ * Remove the m-th node from head point node of cycle-list
+ * Return the next node of removed node
+ */ 
+node* remove_mth_node(node* head, int m) {
+	node* new_head = NULL;
+	node* curr = head;
+	
+	if (head == NULL || head->next == head) {
+		return head;
+	}
+	
+	for (int i = 0; i < m - 1; i++) {
+		curr = curr->next;
+	}
+	new_head = remove_node(curr);
+	return new_head;
+}
+
+int get_alive_node(node* head, int m) {
+	node* curr = head;
 	
 	if (head == NULL) {
 		return -1;
 	}
 	
-	/* if kill the m-th node, the live node is the last node of list */
-	if (m == 1) {
-		while (back->next != head) {
-			back = back->next;
-		}
-		
-		return back->val;
+	if (head->next == head) {
+		return head->num;
 	}
 	
-	while (begin != begin->next) {
-		
-		for (int i = 1; i < m - 1; i++) {
-			begin = begin->next;
-		}
-		node *p_rm_node = begin;
-		node *rm_node = begin->next;
-		begin = remove_node(p_rm_node, rm_node);
+	while (curr->next != curr) {
+		curr = remove_mth_node(curr, m);
 	}
 	
-	
-	return begin->val;
+	return curr->num;
 }
 
-
- 
 int main()
 {
-	int n, m;
- 	int live_val;
- 	node *head;
- 	
+	int m, n, result;
+	node* head;
+	
 	cin>>n>>m;
-	head = do_circular_list(n);
+	head = create_cycle(n);
+
+	result = get_alive_node(head, m);
+	cout<<result;
 	
-//	node *ptr = head;
-//	for (int i = 1; i < n + 4; i++) {
-//		cout<<ptr->val<<" ";
-//		ptr = ptr->next;
-//	}
-	
-	live_val = get_live(head, m);
-	cout<<live_val;
- 	
- 	return 0;
- }
+	return 0;
+}
