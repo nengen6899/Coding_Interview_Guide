@@ -2,9 +2,6 @@
 /* 
  * CD113：将单向链表按某值划分成左边小、中间相等、右边大的形式 
  * 时间复杂度：O(N), 空间复杂度 O(1)
- * 
- * 牛客网OJ上总是报错，很奇怪： 
- * 运行错误:请检查是否存在数组、列表等越界非法访问，内存非法访问等情况
  *  
  * “墨痕断处听江流 ” -- 2020.11.19. 
  */
@@ -24,6 +21,16 @@ struct list_info {
 	struct list_node *head;
 	struct list_node *last;
 };
+
+void print_list(list_node* ptr)
+{
+	list_node *p = ptr;
+	while (p != NULL) {
+		cout<<p->val<<" ";
+		p = p->next;
+	}
+	return;
+}
 
 list_info* init_list(list_info *ptr)
 {
@@ -68,9 +75,11 @@ list_info* add_list(list_info* list_ptr, list_node* node_ptr)
 	if (list_ptr->head == NULL) {
 		list_ptr->head = node_ptr;
 		list_ptr->last = node_ptr;
+		node_ptr->next = NULL;
 	} else {
 		(list_ptr->last)->next = node_ptr;
 		list_ptr->last = node_ptr;
+		node_ptr->next = NULL;
 	}
 	return list_ptr;
 	
@@ -80,39 +89,30 @@ list_info* link_list(list_info* list_ptr1, list_info* list_ptr2)
 {
 //	assert(ptr1 != NULL);
 //	assert(ptr2 != NULL);
-//  assert(ptr1->head != NULL);
-//  assert(ptr1->last != NULL);
 
 	list_info* new_list;
-	if (list_ptr2->head == NULL) {
-//		assert(list_ptr2->last == NULL);
+	if (list_ptr1->head == NULL) {
+		new_list = list_ptr2;
+	} else if (list_ptr2->head == NULL) {
 		new_list = list_ptr1;
 	} else {
 		(list_ptr1->last)->next = list_ptr2->head;
+		list_ptr1->last = list_ptr2->last;
 		(list_ptr2->last)->next = NULL;
-		new_list->head = list_ptr1->head;
-		new_list->last = list_ptr2->last;
+		new_list = list_ptr1;
 	}
 
 	return new_list;
 }
 
 
-void print_list(list_node* ptr)
-{
-	list_node *p = ptr;
-	while (p != NULL) {
-		cout<<p->val<<" ";
-		p = p->next;
-	}
-	return;
-}
+
 
 list_node* list_partition(list_node *head, int pivot)
 {
 
     list_node *ptr;
-    list_info *new_list;
+	list_info *new_list;
     list_info *smaller_list = new list_info();
     list_info *equal_list = new list_info();
     list_info *larger_list = new list_info();
@@ -139,20 +139,21 @@ list_node* list_partition(list_node *head, int pivot)
 	}
 	
 	new_list = link_list(smaller_list, equal_list);
-	new_list = link_list(new_list, larger_list);
+	new_list = link_list(new_list, larger_list);	
+	list_node *ret = new_list->head;
 	
 	delete smaller_list;
 	delete equal_list;
 	delete larger_list;
-	return new_list->head;
+	return ret;
 }
 
 
 int main()
 {
     list_node *head = input_list();
-    head = list_partition(head, pivot);
-	print_list(head);
+    list_node *new_head = list_partition(head, pivot);
+	print_list(new_head);
     return 0;
 }
   
