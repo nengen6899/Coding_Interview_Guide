@@ -1,4 +1,3 @@
-
 /* CD16: 求最大子矩阵大小 */
 
 #include <iostream>
@@ -8,7 +7,6 @@ using namespace std;
 
 const int TO_LEFT = 0;
 const int TO_RIGHT = 1;
-
 
 /* update height-vector by the curr-th raw of matrix */
 void update_height(const vector<vector<int> >& matrix,
@@ -71,7 +69,6 @@ vector<int> get_nearest_less(vector<int> height, int direction) {
 	
 }
 
-
 /* 
  * Get largest-submatrix area of 'matrix', caller should promise
  * every element's value is 1 or 0.
@@ -117,17 +114,9 @@ int get_largest_submatrix(const vector<vector<int> >& matrix) {
 			curr_area = (rbound - lbound + 1) * height[j];
 			if (curr_area > max_area) {
 				max_area = curr_area;
-			}
-			
-//			cout<<lbound<<" "<<rbound<<endl; 
+			} 
 		}
 		
-		
-//		for (int i = 0; i < col_len; i++) {
-//			cout<<r_less[i] << " ";
-//		} 
-//		cout<<endl;
-//		cout<<"max: "<<max_area<<endl<<endl;
 	}
 	
 	return max_area;
