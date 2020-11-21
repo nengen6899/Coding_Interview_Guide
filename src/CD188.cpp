@@ -60,11 +60,11 @@ vector<int> do_traverse(const vector<int>& data, int direction)
 vector<pair<int, int> > get_nearest_smaller(const vector<int>& data)
 {
 	int len = 0;
-	vector<int> left;     /* left£ºthe location of left-nearest-smaller element */
-	vector<int> right;    /* right£ºthe location of right-nearest-smaller element */
+	vector<int> left;                      /* left£ºthe location of left-nearest-smaller element */
+	vector<int> right;                     /* right£ºthe location of right-nearest-smaller element */
 	vector<pair<int, int> > smaller_val;
 
-	left = do_traverse(data, TO_RIGHT);   /* Traverse to right */
+	left = do_traverse(data, TO_RIGHT);    /* Traverse to right */
 	right = do_traverse(data, TO_LEFT);
 
 	len = left.size();   /* Debug when left.size != right.size */
