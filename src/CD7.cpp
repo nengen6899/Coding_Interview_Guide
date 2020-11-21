@@ -1,10 +1,8 @@
-
 /* CD7: 用递归函数和栈操作逆序一个栈 */
 
 #include <iostream>
 #include <stack>
 using namespace std;
-
 
 /* Get and remove the last element of input. 
  * Return the value of last element. 
