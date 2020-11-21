@@ -1,7 +1,5 @@
 /* CD48: 打印两个升序链表的公共部分 */ 
 
-
-
 #include <bits/stdc++.h>
 #include <stdio.h>
 using namespace std;
@@ -11,7 +9,8 @@ struct list_node{
     struct list_node * next;
 }; //链表的节点
 
-list_node *input_list(void) //读入链表
+
+list_node *input_list(void)              //读入链表
 {
     int n, val;
     list_node * phead = new list_node();
