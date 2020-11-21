@@ -1,15 +1,6 @@
 /* CD108: 反转部分单向链表 */
-
-/* filename: CD108.cpp
- * author:  leisy
- * date: 2020.10.5
- * version: 1.0
- * description: 《Programmer interview guide》, charpter 2, CD108,
- *     Reverse part of singly linked list.
- */
  
- 
- # include <bits/stdc++.h>
+# include <bits/stdc++.h>
 using namespace std;
 
 struct list_node{
