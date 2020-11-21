@@ -18,8 +18,7 @@ int sort_stack(stack<int> in, stack<int>& out) {
 			num ++;
 		}
 		
-		out.push(in_top);
-		
+		out.push(in_top);	
 		for (int i = 0; i < num; i++) {
 			int tmp = in.top();
 			in.pop();
@@ -56,7 +55,6 @@ int main()
 	while (!out.empty()) {
 		cout<<out.top()<<" ";
 		out.pop();
-	}
-		
+	}		
 	return 0;
  } 
