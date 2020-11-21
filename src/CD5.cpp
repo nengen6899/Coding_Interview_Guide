@@ -1,15 +1,9 @@
-
-/*
- * CD5: 设计一个有getMin功能的栈 
-*/ 
+/* CD5: 设计一个有getMin功能的栈 */ 
 
 #include <iostream>
 #include <stack>
 #include <string>
-
 using namespace std;
-
-
 
 class minStack{
 	private:
