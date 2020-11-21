@@ -1,13 +1,6 @@
 
-/* 
- * CD109：环形单链表的约瑟夫问题 
- * filename: CD109.cpp
- * author:  leisy
- * date: 2020.11.16 
- * version: 1.0
- * description: 《Programmer interview guide》, charpter 2, CD109,
- *                Joseph's Problem of Circular Singly Linked List.
- */
+/* CD109：环形单链表的约瑟夫问题 */ 
+
  
 #include <iostream>
 using namespace std;
