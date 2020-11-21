@@ -1,14 +1,5 @@
 /* CD18：最大值减去最小值小于或等于num的子数组数量 */
 
-/* 
- * filename: CD18.cpp
- * author: leisy
- * date:  2020.10.1
- * version: 1.0
- * description: 《programmer code interview》, charpter 1, CD18.  
- *     The maximum minus the minimum is less than or equal to the number of subarrays of num.
- */
-
 #include <iostream>
 #include <queue>
 #include <deque>
