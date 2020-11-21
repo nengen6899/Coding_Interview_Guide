@@ -1,5 +1,6 @@
 /* CD106: 删除链表的中间节点 */ 
-/* note: if delete the first node, update head pointer .*/ 
+
+
 #include <math.h>
 #include <stdio.h>
 #include <bits/stdc++.h>

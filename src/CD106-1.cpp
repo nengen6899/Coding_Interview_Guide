@@ -1,6 +1,4 @@
 /* CD106-1: 删除链表的中间节点 */ 
-/* note: if K-th node is the first node of list, update head pointer */ 
-
 
 #include <math.h>
 #include <stdio.h>
