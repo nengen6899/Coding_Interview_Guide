@@ -1,15 +1,6 @@
-/* CD107: 反转单向链表,反转双向链表,function reverse_list */
+/* CD107: 反转单向链表,反转双向链表 */
  
-/* filename: CD107.cpp
- * author:  leisy
- * date: 2020.10.5
- * version: 1.0
- * description: 《Programmer interview guide》, charpter 2, CD107,
- *     Reverse singly linked list, Reverse double linked list.
- */
-
-
-# include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct list_node{
