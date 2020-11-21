@@ -4,7 +4,6 @@
 #include <stack>
 #include <queue>
 #include <vector>
-
 using namespace std;
 
 class GetMaxQue {
@@ -76,8 +75,6 @@ int GetMaxQue::size() {
 	return data.size();
 }
 
-
-
 /* Get the max value when window move through input.The size
  * of window is wsize.
  * Return a vector which include these max value.
@@ -105,7 +102,6 @@ vector<int> get_max_vec(const vector<int>& input, int wsize) {
 
 	return output;
 }
-
 
 int main()
 {
