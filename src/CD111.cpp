@@ -4,6 +4,7 @@
 #include <stack>
 using namespace std;
 
+
 struct list_node{
     int val;
     struct list_node * next;
@@ -68,7 +69,6 @@ list_node * check(list_node * head)
 
 	return tmp;
 }
-
 
 int main ()
 {
