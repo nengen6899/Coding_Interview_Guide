@@ -1,5 +1,4 @@
 /* CD49: 在单链表中删出倒数第K个节点 */ 
-/* note: if delete the first node of list, update head. */
 
 #include<bits/stdc++.h>
 #include<stdio.h> 
