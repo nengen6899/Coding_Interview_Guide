@@ -1,4 +1,4 @@
-/* CD101：单调栈结构（不含重复元素） */ 
+/* CD101：单调栈结构(不含重复元素) */ 
 
 #include <iostream>
 #include <stack>
