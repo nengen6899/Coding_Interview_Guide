@@ -15,7 +15,7 @@ int get_min_sort(vector<int> arr) {
     
     int min = arr[len - 1];
     for (int i = len - 2; i >= 0; i--) {
-        if (arr[i] < min) {
+        if (arr[i] <= min) {
             min = arr[i];
         } else {
             left = i;
@@ -28,7 +28,7 @@ int get_min_sort(vector<int> arr) {
     
     int max = arr[0];
     for (int i = 1; i < len; i++) {
-        if (arr[i] > max) {
+        if (arr[i] >= max) {
             max = arr[i];
         } else {
             right = i;
